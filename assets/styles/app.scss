@@ -1,0 +1,19 @@
+@import "~bootstrap/scss/bootstrap";
+$primary: #4CD7A3;
+$secondary: darken(#131413, 20%);
+
+body {
+    background-color: $secondary;
+}
+
+h1 {
+    color: $primary;
+}
+
+.navbar {
+    justify-content: flex-start;
+}
+
+.navbar-brand {
+    color: $primary;
+}
