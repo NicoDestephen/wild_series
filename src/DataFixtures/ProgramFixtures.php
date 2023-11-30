@@ -14,27 +14,27 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
                         'title'    => 'Walking dead',
                         'synopsis' => 'Des zombies envahissent la terre',
                         'category' => 'Action',
-                        'poster'   => 'lalala',],
+                        'poster'   => '/build/images/walking_dead_poster.jpg',],
         'Program2' => [
                         'title'    => 'Stranger Things',
                         'synopsis' => 'Des enfants qui vont dans un monde parallèle',
                         'category' => 'Horreur',
-                        'poster'   => 'lilili',],
+                        'poster'   => '/build/images/stranger_things_poster.jpg',],
         'Program3' => [
                         'title'    => 'The Witcher',
                         'synopsis' => 'Un sorceleur qui tape des monstres',
                         'category' => 'Horreur',
-                        'poster'   => 'lululu',],
+                        'poster'   => '/build/images/the_witcher_poster.jpg',],
         'Program4' => [
                         'title'    => 'Loki',
                         'synopsis' => 'Les aventures de Loki à travers le temps',
                         'category' => 'Fantastique',
-                        'poster'   => 'lololo',],
+                        'poster'   => '/build/images/loki_poster.jpg',],
         'Program5' => [
                         'title'    => 'Bad Batch',
                         'synopsis' => 'Les aventures d\'une équipe de clone après l\'ordre 66',
                         'category' => 'Action',
-                        'poster'   => 'piou',],
+                        'poster'   => '/build/images/bad_batch_poster.jpeg',],
     ];
     public function load(ObjectManager $manager)
     {
