@@ -4,12 +4,14 @@
 
 {% block body %}
     <div class="media">
-        <div class="media-body">
+        <div class="cards_list">
         {% for program in programs %}
-            <h1 class="mt-0">{{ program.title }}</h1>
+        <div class='series_list'>
+            <h1 class="mt-0">{{ program.id }} / {{ program.title }}</h1>
             <p>{{ program.synopsis }}</p>
             <p>Catégorie : {{ program.category.name }}</p>
             <a href="{{ path("program_show", { id: program.id }) }}">Fiche détaillée</a>
+        </div>
         {% endfor %}
         </div>
     </div>
