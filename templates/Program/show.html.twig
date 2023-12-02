@@ -11,6 +11,18 @@
                 <div class='poster_field'>
                     <img class="poster" src="{{program.poster}}" alt="{{ program.title }} poster" style="width: 20%; margin-left: 1rem; margin-bottom: 1rem">
                 </div>
+                <h1>Liste des saisons disponibles :</h1>
+                {% for season in program.seasons %}
+                    <div class='series_list'>
+                        <ul>
+                            <li class='series_list_info'>
+                                <a href="{{ path("program_season_show", { programId: program.id, seasonId: season.id }) }}">{{ season.id }}</a>
+                            </li>
+                        </ul>
+                    </div>
+                {% else %}
+                    Aucune saisons trouvée.
+                {% endfor %}
         </div>
     </div>
 
