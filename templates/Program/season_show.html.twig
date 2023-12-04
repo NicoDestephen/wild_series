@@ -29,8 +29,8 @@
                 {% for episode in season.episodes %}
                     <div class='series_list'>
                         <ul>
-                            <li class='series_list_info'>Episode {{ episode.number}} : {{ episode.title}}
-                                <p>Résumé de l'épisode : {{ episode.synopsis }}</p>
+                        <li class='series_list_info'>
+                                <a href="{{ path("program_episode_show", { program: program.id, season: season.id, episode: episode.id }) }}">Episode - {{ episode.number }}</a>
                             </li>
                         </ul>
                     </div>

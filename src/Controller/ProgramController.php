@@ -8,6 +8,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\ProgramRepository;
 use App\Repository\SeasonRepository;
+use App\Entity\Program;
+use App\Entity\Season;
+use App\Entity\Episode;
 
 #[Route('/program', name: 'program_')]
 class ProgramController extends AbstractController
@@ -22,17 +25,14 @@ class ProgramController extends AbstractController
              ]);
     }
 
-
-
-    #[Route('/show/{id<^[0-9]+$>}', requirements: ['id'=>'\d+'], methods: ['GET'], name: 'show')]
-    public function show($id, ProgramRepository $programRepository): Response
+    #[Route('/show/{id}', requirements: ['id'=>'\d+'], methods: ['GET'], name: 'show')]
+    public function show(Program $program): Response
     {
-        $program = $programRepository->findOneBy(['id' => $id]);
         $seasons = $program->getSeasons();
 
         if (!$program) {
             throw $this->createNotFoundException(
-                'No program with id : '.$id.' found in program\'s table.'
+                'No program found in program\'s table.'
             );
         }
         return $this->render('program/show.html.twig', [
@@ -41,18 +41,30 @@ class ProgramController extends AbstractController
         ]);
     }
 
-    #[Route('/{programId}/seasons/{seasonId}', methods: ['GET'], name: 'season_show')]
-    public function showSeason(int $programId, int $seasonId, SeasonRepository $seasonRepository, ProgramRepository $programRepository, EpisodeRepository $episodeRepository): Response
+    #[Route('/{program}/seasons/{season}', methods: ['GET'], name: 'season_show')]
+    public function showSeason(Program $program, Season $season): Response
     {
-        $program = $programRepository->find($programId);
-        $season = $seasonRepository->findOneBy(['program' => $program, 'id' => $seasonId]);
-
         if (!$season) {
             throw $this->createNotFoundException(
-                'No season with id : '.$season.' found in season\'s table.'
+                'No season found in season\'s table.'
             );
         }
         return $this->render('program/season_show.html.twig', [
+            'season' => $season,
+            'program' => $program,
+        ]);
+    }
+
+    #[Route('/{program}/season/{season}/episode/{episode}', methods: ['GET'], name: 'episode_show')]
+    public function showEpisode(Program $program, Season $season, Episode $episode): Response
+    {
+        if (!$episode) {
+            throw $this->createNotFoundException(
+                'No episode found in episode table.'
+            );
+        }
+        return $this->render('program/episode_show.html.twig', [
+            'episode' => $episode,
             'season' => $season,
             'program' => $program,
         ]);
