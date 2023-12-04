@@ -44,19 +44,17 @@ class ProgramController extends AbstractController
     #[Route('/{programId}/seasons/{seasonId}', methods: ['GET'], name: 'season_show')]
     public function showSeason(int $programId, int $seasonId, SeasonRepository $seasonRepository, ProgramRepository $programRepository, EpisodeRepository $episodeRepository): Response
     {
-        $seasonId = $seasonRepository->findByProgram($programId, ['id' => 'ASC']);
-        $programId = $programRepository->findOneBy(['id' => $programId]);
-        $episodeId = $episodeRepository->findBySeason($seasonId, ['id' => 'ASC']);
+        $program = $programRepository->find($programId);
+        $season = $seasonRepository->findOneBy(['program' => $program, 'id' => $seasonId]);
 
-        if (!$seasonId) {
+        if (!$season) {
             throw $this->createNotFoundException(
-                'No season with id : '.$seasonId.' found in season\'s table.'
+                'No season with id : '.$season.' found in season\'s table.'
             );
         }
         return $this->render('program/season_show.html.twig', [
-            'seasons' => $seasonId,
-            'program' => $programId,
-            'epidodes' => $episodeId,
+            'season' => $season,
+            'program' => $program,
         ]);
     }
 }
