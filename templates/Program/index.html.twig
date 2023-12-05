@@ -5,18 +5,19 @@
 {% block body %}
     <img src="{{ asset('build/images/background_home.jpg') }}" class='background_home' alt="background_home"/>
 <div class='cards_list'>
-    <h1>Liste des séries disponibles :</h1>
+    <h1 class='title_page'>Liste des séries disponibles :</h1>
         {% for program in programs %}
             <div class='series_list'>
-                <h2 class='series_list_info'>{{ loop.index }} / {{ program.title }} - Catégorie : {{ program.category.name }}</h2>
-                    <p>{{ program.synopsis }}</p>
-                    <a href="{{ path("program_show", { id: program.id }) }}">Fiche détaillée</a>
+                <h2>{{ loop.index }} / {{ program.title }}</h2>
+                <h2>Catégorie : {{ program.category.name }}</h2> 
+                    <p class='series_list_details'>{{ program.synopsis }}</p>
+                    <a class='link' href="{{ path("program_show", { id: program.id }) }}">Fiche détaillée</a>
                 </div>
         {% else %}
             Aucune série trouvée.
         {% endfor %}
 </div>
-    <a class='home_button_program' href="{{ path('app_index') }}">
+    <a class='return_button' href="{{ path('app_index') }}">
         Retour à l'accueil
     </a>
 {% endblock %}

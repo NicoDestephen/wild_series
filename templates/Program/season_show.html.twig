@@ -1,12 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {% for season in program.seasons %}
-            Saison #{{ season.id }}
-    {% endfor %}
+            Saison #{{ season.number }}
 {% endblock %}
 
 {% block body %}
+    <img src="{{ asset('build/images/background_home.jpg') }}" class='background_home' alt="background_home"/>
     <div class="cards_list">
         <div class='series_list'>
             <h2 class="mt-0">{{ program.id }} / {{ program.title }}</h2>
@@ -30,7 +29,7 @@
                     <div class='series_list'>
                         <ul>
                         <li class='series_list_info'>
-                                <a href="{{ path("program_episode_show", { program: program.id, season: season.id, episode: episode.id }) }}">Episode - {{ episode.number }}</a>
+                                <a class='link' href="{{ path("program_episode_show", { program: program.id, season: season.id, episode: episode.id }) }}">Episode - {{ episode.number }}</a>
                             </li>
                         </ul>
                     </div>
@@ -40,7 +39,7 @@
         </div>
     </div>
 
-    <a href="{{ path('program_index') }}">
+    <a class='return_button' href="{{ path('program_index') }}">
         Retour à la liste des programmes
     </a>
 {% endblock %}

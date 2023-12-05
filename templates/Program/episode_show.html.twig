@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block body %}
+    <img src="{{ asset('build/images/background_home.jpg') }}" class='background_home' alt="background_home"/>
     <div class="cards_list">
         <div class='series_list'>
             <h2 class="mt-0">{{ program.title }}</h2>
@@ -16,7 +17,7 @@
                 </div>
         </div>
     </div>
-    <a href="{{ path('program_index') }}">
+    <a class='return_button' href="{{ path('program_index') }}">
         Retour à la liste des programmes
     </a>
 {% endblock %}

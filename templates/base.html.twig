@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="{{ asset('build/images/background_home.jpg') }}"/>
+
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
@@ -13,7 +13,7 @@
         {% endblock %}
     </head>
     <body>
-        {% block header %}{% include '_navbar.html.twig' %}{% endblock %}
+        {% block header %}<header>{% include '_navbar.html.twig' %}</header>{% endblock %}
         {% block body %}{% endblock %}
     </body>
 </html>

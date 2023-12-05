@@ -3,6 +3,7 @@
 {% block title %}Catégorie {{ category.name }}{% endblock %}
 
 {% block body %}
+    <img src="{{ asset('build/images/background_home.jpg') }}" class='background_home' alt="background_home"/>
     <div class="media">
         <div class="cards_list">
         {% for program in programs %}
@@ -10,13 +11,13 @@
             <h1 class="mt-0">{{ program.id }} / {{ program.title }}</h1>
             <p>{{ program.synopsis }}</p>
             <p>Catégorie : {{ program.category.name }}</p>
-            <a href="{{ path("program_show", { id: program.id }) }}">Fiche détaillée</a>
+            <a class'link' href="{{ path("program_show", { id: program.id }) }}">Fiche détaillée</a>
         </div>
         {% endfor %}
         </div>
     </div>
 
-    <a href="{{ path('program_index') }}">
+    <a class='return_button' href="{{ path('program_index') }}">
         Retour à la liste des programmes
     </a>
 {% endblock %}

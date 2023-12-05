@@ -24,7 +24,6 @@ class SeasonFixtures extends Fixture implements DependentFixtureInterface
             $manager->persist($season);
         }
     }
-
         $manager->flush();
     }
 
