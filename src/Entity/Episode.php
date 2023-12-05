@@ -23,7 +23,7 @@ class Episode
     private ?string $synopsis = null;
 
     #[ORM\ManyToOne(inversedBy: 'episodes')]
-    private ?season $season = null;
+    private ?Season $season = null;
 
     public function getId(): ?int
     {
