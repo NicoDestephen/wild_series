@@ -12,7 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-
+use App\Entity\Actor;
 
 use App\Entity;
 use phpDocumentor\Reflection\Types\Integer;
@@ -27,6 +27,13 @@ class ProgramType extends AbstractType
             ->add('poster', FileType::class)
             ->add('country', TextType::class)
             ->add('year', IntegerType::class)
+            ->add('actors', EntityType::class, [
+                'class' => Actor::class,
+                'choice_label' => 'name',
+                'multiple' => true,
+                'expanded' => true,
+                'by_reference' => false,
+            ])
             ->add('category', EntityType::class, ['class' => Category::class, 'choice_label' => 'name'])
         ;
     }

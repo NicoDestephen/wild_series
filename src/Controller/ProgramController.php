@@ -38,7 +38,7 @@ class ProgramController extends AbstractController
 
             $this->addFlash('success', 'The new program has been created');
 
-            return $this->redirectToRoute('app_program_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('program_index', [], Response::HTTP_SEE_OTHER);
 
         }
 
