@@ -7,7 +7,7 @@
     <strong> {{ actor.name }} </strong>
 <ul>
     {% for program in actor.programs %}
-        <li><a class'link' href="{{ path("program_show", { id: program.id }) }}">{{ program.title }}</a></li>
+        <li><a class'link' href="{{ path("program_show", { slug: program.slug }) }}">{{ program.title }}</a></li>
     {% else %}
         <li>Aucun acteur pour cette série</li>
     {% endfor %}

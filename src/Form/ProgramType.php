@@ -24,7 +24,7 @@ class ProgramType extends AbstractType
         $builder
             ->add('title', TextType::class)
             ->add('synopsis', TextareaType::class)
-            ->add('poster', FileType::class)
+            ->add('poster', TextType::class)
             ->add('country', TextType::class)
             ->add('year', IntegerType::class)
             ->add('actors', EntityType::class, [

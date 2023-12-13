@@ -11,7 +11,7 @@
             <h1 class="mt-0">{{ program.id }} / {{ program.title }}</h1>
             <p>{{ program.synopsis }}</p>
             <p>Catégorie : {{ program.category.name }}</p>
-            <a class'link' href="{{ path("program_show", { id: program.id }) }}">Fiche détaillée</a>
+            <a class'link' href="{{ path("program_show", { slug: program.slug }) }}">Fiche détaillée</a>
         </div>
         {% endfor %}
         </div>
