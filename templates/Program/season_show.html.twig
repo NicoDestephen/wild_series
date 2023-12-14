@@ -29,7 +29,7 @@
                     <div class='series_list'>
                         <ul>
                         <li class='series_list_info'>
-                                <a class='link' href="{{ path("program_episode_show", { slug: program.slug, season: season.id, episode: episode.id }) }}">Episode - {{ episode.number }}</a>
+                                <a class='link' href="{{ path("program_episode_show", { slug: program.slug, season: season.id, slugEpisode: episode.slugEpisode }) }}">Episode - {{ episode.number }}</a>
                             </li>
                         </ul>
                     </div>

@@ -118,7 +118,7 @@ class ProgramController extends AbstractController
         ]);
     }
 
-    #[Route('/{slug}/season/{season}/episode/{episode}', methods: ['GET'], name: 'episode_show')]
+    #[Route('/{slug}/season/{season}/episode/{slugEpisode}', methods: ['GET'], name: 'episode_show')]
     public function showEpisode(Program $program, Season $season, Episode $episode): Response
     {
         if (!$episode) {

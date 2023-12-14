@@ -20,6 +20,7 @@ class EpisodeType extends AbstractType
             ->add('number', IntegerType::class)
             ->add('synopsis', TextareaType::class)
             ->add('season', null, ['choice_label' => 'number'])
+            ->add('duration', IntegerType::class)
         ;
     }
 

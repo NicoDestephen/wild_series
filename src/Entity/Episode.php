@@ -29,7 +29,7 @@ class Episode
     private ?int $duration = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $slug = null;
+    private ?string $slugEpisode = null;
 
     public function getId(): ?int
     {
@@ -96,14 +96,14 @@ class Episode
         return $this;
     }
 
-    public function getSlug(): ?string
+    public function getSlugEpisode(): ?string
     {
-        return $this->slug;
+        return $this->slugEpisode;
     }
 
-    public function setSlug(string $slug): static
+    public function setSlugEpisode(string $slugEpisode): static
     {
-        $this->slug = $slug;
+        $this->slugEpisode = $slugEpisode;
 
         return $this;
     }

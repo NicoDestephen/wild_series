@@ -32,7 +32,7 @@ class EpisodeController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $slug = $slugger->slug($episode->getTitle());
-            $episode->setSlug($slug);
+            $episode->setSlugEpisode($slug);
             $entityManager->persist($episode);
             $entityManager->flush();
 
@@ -47,7 +47,7 @@ class EpisodeController extends AbstractController
         ]);
     }
 
-    #[Route('/{slug}', name: 'app_episode_show', methods: ['GET'])]
+    #[Route('/{slugEpisode}', name: 'app_episode_show', methods: ['GET'])]
     public function show(Episode $episode): Response
     {
         return $this->render('episode/show.html.twig', [
@@ -55,7 +55,7 @@ class EpisodeController extends AbstractController
         ]);
     }
 
-    #[Route('/{slug}/edit', name: 'app_episode_edit', methods: ['GET', 'POST'])]
+    #[Route('/{slugEpisode}/edit', name: 'app_episode_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Episode $episode, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
         $form = $this->createForm(EpisodeType::class, $episode);
@@ -63,7 +63,7 @@ class EpisodeController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $slug = $slugger->slug($episode->getTitle());
-            $episode->setSlug($slug);
+            $episode->setSlugEpisode($slug);
             $entityManager->flush();
 
             $this->addFlash('danger', 'The episode has been updated');
