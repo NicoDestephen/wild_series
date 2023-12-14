@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+            Saison #{{ season.number }}
+{% endblock %}
+
+{% block body %}
+    <img src="{{ asset('build/images/background_home.jpg') }}" class='background_home' alt="background_home"/>
+    <div class="cards_list">
+        <div class='series_list'>
+            <h2 class="mt-0">{{ program.id }} / {{ program.title }}</h2>
+            <p>Résumé de la série : {{ program.synopsis }}</p>
+            <p>Année de sortie : {{ program.year }}</p>
+            <p>Pays de production : {{ program.country }}</p>
+            <p>Catégorie : {{ program.category.name }}</p>
+                <div class='poster_field'>
+                    <img class="poster" src="{{program.poster}}" alt="{{ program.title }} poster" style="width: 20%; margin-left: 1rem; margin-bottom: 1rem">
+                </div>
+                <h2>Infos de la saison : </h2>
+                    <div class='series_list'>
+                        <ul>
+                            <li class='series_list_info'>Résumé de la saison : {{ season.description}}</li>
+                            <li class='series_list_info'>Année de parution : {{ season.year }}</li>
+                        </ul>
+                    </div>
+
+                <h2>Liste des épisodes : </h2>
+                {% for episode in season.episodes %}
+                    <div class='series_list'>
+                        <ul>
+                        <li class='series_list_info'>
+                                <a class='link' href="{{ path("program_episode_show", { slug: program.slug, season: season.id, slugEpisode: episode.slugEpisode }) }}">Episode - {{ episode.number }}</a>
+                            </li>
+                        </ul>
+                    </div>
+                {% else %}
+                    Aucun épisode trouvé.
+                {% endfor %}
+        </div>
+    </div>
+
+    <a class='return_button' href="{{ path('program_index') }}">
+        Retour à la liste des programmes
+    </a>
+{% endblock %}

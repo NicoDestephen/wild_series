@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ program.title }}{% endblock %}
+
+{% block body %}
+    <img src="{{ asset('build/images/background_home.jpg') }}" class='background_home' alt="background_home"/>
+    <div class="cards_list">
+        <div class='series_list'>
+            <h1 class="mt-0">{{ program.id }} / {{ program.title }}</h1>
+            <p>{{ program.synopsis }}</p>
+             <p>DUREEEERNERIRNE {{ programDuration }} </p>
+            <p>Catégorie : {{ program.category.name }}</p>
+                <div class='poster_field'>
+                    <img class="poster" src="{{program.poster}}" alt="{{ program.title }} poster" style="width: 20%; margin-left: 1rem; margin-bottom: 1rem">
+                </div>
+                <strong>Acteurs :</strong>
+                    <ul>
+                        {% for actor in program.actors %}
+                           <li><a class'link' href="{{ path("actor_show", { id: actor.id }) }}">{{ actor.name }}</a></li>
+                        {% else %}
+                            <li>Aucun acteur pour cette série</li>
+                        {% endfor %}
+                    </ul>
+                <h1>Liste des saisons disponibles :</h1>
+                {% for season in program.seasons %}
+                    <div class='series_list'>
+                        <ul>
+                            <li class='series_list_info'>
+                                <a class='link' href="{{ path("program_season_show", { slug: program.slug, season: season.id }) }}">Saison - {{ season.number }}</a>
+                            </li>
+                        </ul>
+                    </div>
+                {% else %}
+                    Aucune saisons trouvée.
+                {% endfor %}
+        </div>
+    </div>
+    <a class='return_button' href="{{ path('program_index') }}">
+        Retour à la liste des programmes
+    </a>
+
+{% endblock %}

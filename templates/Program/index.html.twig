@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}All programs{% endblock %}
+
+{% block body %}
+    <img src="{{ asset('build/images/background_home.jpg') }}" class='background_home' alt="background_home"/>
+<div class='cards_list'>
+    <h1 class='title_page'>Liste des séries disponibles :</h1>
+        {% for program in programs %}
+            <div class='series_list'>
+                <h2>{{ loop.index }} / {{ program.title }}</h2>
+                <h2>Catégorie : {{ program.category.name }}</h2> 
+                    <p class='series_list_details'>{{ program.synopsis }}</p>
+                    <a class='link' href="{{ path("program_show", { slug: program.slug }) }}">Fiche détaillée</a>
+                </div>
+        {% else %}
+            Aucune série trouvée.
+        {% endfor %}
+</div>
+    <a class='return_button' href="{{ path('app_index') }}">
+        Retour à l'accueil
+    </a>
+{% endblock %}
