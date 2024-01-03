@@ -15,6 +15,9 @@ class ProgramDuration
                 $totalDuration += $episode->getDuration();
             }
         }
-        return $totalDuration;
+        $days = floor($totalDuration / 60 / 24);
+        $hours = floor(($totalDuration - $days * 24 * 60) / 60);
+        $minutes = $totalDuration - ($days * 24 * 60) - ($hours * 60);
+        return $days . " jours " . $hours . " heures " . $minutes . " minutes";
     } 
 }
