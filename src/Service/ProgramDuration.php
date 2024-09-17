@@ -2,7 +2,6 @@
 
 namespace App\Service;
 
-use App\DataFixtures\ProgramFixtures;
 use App\Entity\Program;
 
 class ProgramDuration 

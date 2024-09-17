@@ -1,0 +1,8 @@
+{% extends "layoutMail.html.twig" %}
+
+{% block body %}
+    <h1>New Program {{ program.title }} created !</h1>
+    <p>Hello, the new program {{ program.title }} has been created on Wild Series</p>
+    <p>Synopsis : {{ program.synopsis }}</p>
+    <a href="{{ path("program_show", { slug: program.slug }) }}">Cliquez içi pour voir la nouvelle série</a>
+{% endblock %}
